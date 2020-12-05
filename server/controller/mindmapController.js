@@ -10,14 +10,15 @@ module.exports = {
       const { mindmapIdx } = req.params;
 
       const detailMindMap = await mindmap.findAll({
-        attributes: ['title', 'start_date', 'end_date', 'contents'],
+        groupId: 1,
+        attributes: ['title', 'start_date', 'end_date', 'contents', [sequelize.fn('COUNT', sequelize.col('keywordId')), 'keywordCount']],
         where: {
           id: mindmapIdx
         },
         include: [{
           model: keyword,
           as: 'hasKeyword',
-          attributes: [[sequelize.fn('COUNT', 'keywordId'), 'keywordCount']],
+          attributes: [],
           through: { attributes: [] },
         }],
       })
