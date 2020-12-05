@@ -15,7 +15,7 @@ module.exports = {
       }
 
       const detailMindMap = await mindmap.findAll({
-        groupId: mindmapIdx,
+        group: 'keywordId',
         attributes: ['title', 'start_date', 'end_date', 'contents', [sequelize.fn('COUNT', sequelize.col('keywordId')), 'keywordCount']],
         where: {
           id: mindmapIdx
