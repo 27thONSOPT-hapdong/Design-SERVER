@@ -13,4 +13,11 @@ if (config.use_env_variable) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.keyword = require('./keyword')(sequelize,Sequelize);
+db.mindmap = require('./mindmap')(sequelize, Sequelize);
+db.mindmap_keyword = require('./mindmap_keyword')(sequelize,Sequelize);
+
+db.keyword.belongsToMany(db.mindmap, {through : "mindmap_keyword", as : "hasMindmap"});
+db.mindmap.belongsToMany(db.keyword, {through : "mindmap_keyword", as : "hasKeyword"});
+
 module.exports = db;
