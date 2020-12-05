@@ -4,5 +4,7 @@ module.exports = {
 
   MINDMAP_ONE_SUCCESS: "마인드맵 하나 조회 성공입니다",
   
-  KEYWORD_ADD_SUCCESS: "키워드 추가 성공입니다"
+  KEYWORD_ADD_SUCCESS: "키워드 추가 성공입니다",
+
+  NULL_VALUE: "필요한 값이 없습니다",
 };

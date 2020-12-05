@@ -9,6 +9,11 @@ module.exports = {
     try {
       const { mindmapIdx } = req.params;
 
+      if (!mindmapIdx) {
+        res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, resposseMessage.NULL_VALUE));
+        return;
+      }
+
       const detailMindMap = await mindmap.findAll({
         groupId: mindmapIdx,
         attributes: ['title', 'start_date', 'end_date', 'contents', [sequelize.fn('COUNT', sequelize.col('keywordId')), 'keywordCount']],
