@@ -7,5 +7,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/', require('./mindmap'));
+router.use('/', require('./keyword'));
 
 module.exports = router;
